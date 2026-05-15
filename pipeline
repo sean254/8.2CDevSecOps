@@ -33,7 +33,7 @@ pipeline {
             emailext (
                 subject: "Build ${currentBuild.fullDisplayName}",
                 body: "Build completed. Please check attached logs.",
-                to: "your_email@gmail.com",
+                to: "kemboisean@gmail.com",
                 attachLog: true
             )
         }

@@ -39,7 +39,7 @@ pipeline {
         emailext(
             subject: "Jenkins Build Log - ${currentBuild.fullDisplayName}",
             body: "Build completed. The build log is attached.",
-            to: "your_email@gmail.com",
+            to: "kemboisean@gmail.com",
             attachLog: true
         )
     }

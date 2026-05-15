@@ -1,14 +1,7 @@
 pipeline {
-    agent any 
+    agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/sean254/8.2CDevSecOps.git'
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
@@ -32,6 +25,17 @@ pipeline {
             steps {
                 sh 'npm audit || true'
             }
+        }
+    }
+
+    post {
+        always {
+            emailext (
+                subject: "Build ${currentBuild.fullDisplayName}",
+                body: "Build completed. Please check attached logs.",
+                to: "your_email@gmail.com",
+                attachLog: true
+            )
         }
     }
 }
